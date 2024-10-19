@@ -2,8 +2,6 @@ import React from "react";
 import "./styles/Question.css";
 import blueTeam1Icon from "./assets/blueTeam.svg";
 import greenTeam2Icon from "./assets/greenTeam.svg";
-import blueTeamButtonIcon from "./assets/blueTeamButton.svg";
-import greenTeamButtonIcon from "./assets/greenTeamButton.svg";
 
 const Question = ({
   category,
@@ -47,6 +45,7 @@ const Question = ({
         onClick={() => handleQuestionClick(category, index)}
       >
         <p>{question.answer}</p>
+
         <div className="team-icons">
           <img
             src={blueTeam1Icon}
