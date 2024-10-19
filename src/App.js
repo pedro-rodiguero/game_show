@@ -1,10 +1,11 @@
-// src/App.js
 import React, { useState } from "react";
 import { questions } from "./questions";
 import "./App.css";
 
 function App() {
   const [flippedQuestion, setFlippedQuestion] = useState(null);
+  const [scores, setScores] = useState({ team1: 0, team2: 0 });
+  const [answeredQuestions, setAnsweredQuestions] = useState({});
   const categories = Object.keys(questions);
   const half = Math.ceil(categories.length / 2);
   const upperCategories = categories.slice(0, half);
@@ -26,10 +27,27 @@ function App() {
     }
   };
 
+  const handleScoreUpdate = (team) => {
+    const points = (flippedQuestion.index + 1) * 10;
+    setScores((prevScores) => ({
+      ...prevScores,
+      [team]: prevScores[team] + points,
+    }));
+    setAnsweredQuestions((prev) => ({
+      ...prev,
+      [`${flippedQuestion.category}-${flippedQuestion.index}`]: team,
+    }));
+    setFlippedQuestion(null);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Game Show</h1>
+        <div className="scoreboard">
+          <div>Team 1: {scores.team1}</div>
+          <div>Team 2: {scores.team2}</div>
+        </div>
       </header>
       <div className="categories">
         {flippedQuestion && <div className="highlighted-bg"></div>}
@@ -47,6 +65,12 @@ function App() {
                       ? flippedQuestion.state === "question"
                         ? "flipped scaled"
                         : "flipped-twice scaled"
+                      : ""
+                  } ${
+                    answeredQuestions[`${category}-${i}`] === "team1"
+                      ? "team1-bg"
+                      : answeredQuestions[`${category}-${i}`] === "team2"
+                      ? "team2-bg"
                       : ""
                   }`}
                 >
@@ -67,6 +91,12 @@ function App() {
                     onClick={() => handleQuestionClick(category, i)}
                   >
                     <p>{q.answer}</p>
+                    <button onClick={() => handleScoreUpdate("team1")}>
+                      Team 1
+                    </button>
+                    <button onClick={() => handleScoreUpdate("team2")}>
+                      Team 2
+                    </button>
                   </div>
                 </div>
               ))}
@@ -88,6 +118,12 @@ function App() {
                         ? "flipped scaled"
                         : "flipped-twice scaled"
                       : ""
+                  } ${
+                    answeredQuestions[`${category}-${i}`] === "team1"
+                      ? "team1-bg"
+                      : answeredQuestions[`${category}-${i}`] === "team2"
+                      ? "team2-bg"
+                      : ""
                   }`}
                 >
                   <button
@@ -107,6 +143,12 @@ function App() {
                     onClick={() => handleQuestionClick(category, i)}
                   >
                     <p>{q.answer}</p>
+                    <button onClick={() => handleScoreUpdate("team1")}>
+                      Team 1
+                    </button>
+                    <button onClick={() => handleScoreUpdate("team2")}>
+                      Team 2
+                    </button>
                   </div>
                 </div>
               ))}
