@@ -14,6 +14,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  position: relative;
 }
 
 .level {
@@ -43,7 +44,7 @@
   width: 100%;
   cursor: pointer;
   backface-visibility: hidden;
-  transition: transform 0.6s;
+  transition: transform 0.6s, font-size 0.6s, padding 0.6s;
 }
 
 .question-container.flipped .front {
@@ -98,7 +99,29 @@
   border: 1px solid #ccc;
 }
 
-.zoomed {
-  transform: scale(2);
+.scaled {
+  transform: scale(1.25);
   z-index: 10;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 80%;
+  height: 80%;
+}
+
+.scaled .question {
+  font-size: 2em;
+  padding: 20px;
+}
+
+.highlighted-bg {
+  background-color: gray;
+  opacity: 0.5;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
 }

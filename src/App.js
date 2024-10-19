@@ -32,6 +32,7 @@ function App() {
         <h1>Game Show</h1>
       </header>
       <div className="categories">
+        {flippedQuestion && <div className="highlighted-bg"></div>}
         <div className="level">
           {upperCategories.map((category, index) => (
             <div key={index} className="category">
@@ -44,8 +45,8 @@ function App() {
                     flippedQuestion.category === category &&
                     flippedQuestion.index === i
                       ? flippedQuestion.state === "question"
-                        ? "flipped zoomed"
-                        : "flipped-twice zoomed"
+                        ? "flipped scaled"
+                        : "flipped-twice scaled"
                       : ""
                   }`}
                 >
@@ -84,8 +85,8 @@ function App() {
                     flippedQuestion.category === category &&
                     flippedQuestion.index === i
                       ? flippedQuestion.state === "question"
-                        ? "flipped zoomed"
-                        : "flipped-twice zoomed"
+                        ? "flipped scaled"
+                        : "flipped-twice scaled"
                       : ""
                   }`}
                 >
