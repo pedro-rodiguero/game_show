@@ -29,15 +29,15 @@ function App() {
     }
   };
 
-  const handleScoreUpdate = (team) => {
-    const points = (flippedQuestion.index + 1) * 10;
+  const handleScoreUpdate = (team, category, index) => {
+    const points = (index + 1) * 10;
     setScores((prevScores) => ({
       ...prevScores,
       [team]: prevScores[team] + points,
     }));
     setAnsweredQuestions((prev) => ({
       ...prev,
-      [`${flippedQuestion.category}-${flippedQuestion.index}`]: team,
+      [`${category}-${index}`]: team,
     }));
     setFlippedQuestion(null);
   };

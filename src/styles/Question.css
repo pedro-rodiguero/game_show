@@ -95,10 +95,16 @@
   z-index: 5;
 }
 
-.back-twice button {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 1.2em;
+.team-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.team-icon {
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
   cursor: pointer;
 }
 

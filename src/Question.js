@@ -1,5 +1,7 @@
 import React from "react";
 import "./styles/Question.css";
+import blueTeam1Icon from "./assets/blueTeam.svg";
+import greenTeam2Icon from "./assets/greenTeam.svg";
 
 const Question = ({
   category,
@@ -48,8 +50,20 @@ const Question = ({
         onClick={() => handleQuestionClick(category, index)}
       >
         <p>{question.answer}</p>
-        <button onClick={() => handleScoreUpdate("team1")}>Team 1</button>
-        <button onClick={() => handleScoreUpdate("team2")}>Team 2</button>
+        <div className="team-icons">
+          <img
+            src={blueTeam1Icon}
+            alt="Team 1"
+            className="team-icon"
+            onClick={() => handleScoreUpdate("team1", category, index)}
+          />
+          <img
+            src={greenTeam2Icon}
+            alt="Team 2"
+            className="team-icon"
+            onClick={() => handleScoreUpdate("team2", category, index)}
+          />
+        </div>
       </div>
     </div>
   );
