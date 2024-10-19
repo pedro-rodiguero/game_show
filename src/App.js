@@ -16,9 +16,13 @@ function App() {
       flippedQuestion.category === category &&
       flippedQuestion.index === index
     ) {
-      setFlippedQuestion(null);
+      if (flippedQuestion.state === "question") {
+        setFlippedQuestion({ category, index, state: "answer" });
+      } else {
+        setFlippedQuestion(null);
+      }
     } else {
-      setFlippedQuestion({ category, index });
+      setFlippedQuestion({ category, index, state: "question" });
     }
   };
 
@@ -39,7 +43,9 @@ function App() {
                     flippedQuestion &&
                     flippedQuestion.category === category &&
                     flippedQuestion.index === i
-                      ? "flipped"
+                      ? flippedQuestion.state === "question"
+                        ? "flipped zoomed"
+                        : "flipped-twice zoomed"
                       : ""
                   }`}
                 >
@@ -54,6 +60,12 @@ function App() {
                     onClick={() => handleQuestionClick(category, i)}
                   >
                     <p>{q.question}</p>
+                  </div>
+                  <div
+                    className="question back-twice"
+                    onClick={() => handleQuestionClick(category, i)}
+                  >
+                    <p>{q.answer}</p>
                   </div>
                 </div>
               ))}
@@ -71,7 +83,9 @@ function App() {
                     flippedQuestion &&
                     flippedQuestion.category === category &&
                     flippedQuestion.index === i
-                      ? "flipped"
+                      ? flippedQuestion.state === "question"
+                        ? "flipped zoomed"
+                        : "flipped-twice zoomed"
                       : ""
                   }`}
                 >
@@ -86,6 +100,12 @@ function App() {
                     onClick={() => handleQuestionClick(category, i)}
                   >
                     <p>{q.question}</p>
+                  </div>
+                  <div
+                    className="question back-twice"
+                    onClick={() => handleQuestionClick(category, i)}
+                  >
+                    <p>{q.answer}</p>
                   </div>
                 </div>
               ))}
