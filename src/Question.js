@@ -2,6 +2,8 @@ import React from "react";
 import "./styles/Question.css";
 import blueTeam1Icon from "./assets/blueTeam.svg";
 import greenTeam2Icon from "./assets/greenTeam.svg";
+import blueTeamButtonIcon from "./assets/blueTeamButton.svg";
+import greenTeamButtonIcon from "./assets/greenTeamButton.svg";
 
 const Question = ({
   category,
@@ -17,28 +19,23 @@ const Question = ({
     flippedQuestion.category === category &&
     flippedQuestion.index === index;
 
-  const isAnswered = answeredQuestions[`${category}-${index}`];
+  const whoAnswered = answeredQuestions[`${category}-${index}`] ? answeredQuestions[`${category}-${index}`] : 'white';
+  //console.log('answeredQuestions => ', answeredQuestions)
 
   return (
-    <div
-      className={`question-container ${
+    <button
+      className={`question question-container ${
         isFlipped
           ? flippedQuestion.state === "question"
             ? "flipped scaled"
             : "flipped-twice scaled"
           : ""
-      } ${isAnswered === "team1" ? "team1-bg" : isAnswered === "team2" ? "team2-bg" : ""}`}
-    >
-      {isAnswered ? (
-        <div className="question front"></div>
-      ) : (
-        <button
-          className="question front"
-          onClick={() => handleQuestionClick(category, index)}
-        >
-          {(index + 1) * 10}
-        </button>
-      )}
+      }`}
+      style={{ backgroundColor: whoAnswered }}
+      onClick={() => handleQuestionClick(category, index)}
+    >        
+      {(index + 1) * 10}
+      
       <div
         className="question back"
         onClick={() => handleQuestionClick(category, index)}
@@ -55,17 +52,17 @@ const Question = ({
             src={blueTeam1Icon}
             alt="Team 1"
             className="team-icon"
-            onClick={() => handleScoreUpdate("team1", category, index)}
+            onClick={() => handleScoreUpdate("blue", category, index)}
           />
           <img
             src={greenTeam2Icon}
             alt="Team 2"
             className="team-icon"
-            onClick={() => handleScoreUpdate("team2", category, index)}
+            onClick={() => handleScoreUpdate("green", category, index)}
           />
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 

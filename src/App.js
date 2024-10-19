@@ -6,7 +6,7 @@ import "./App.css";
 
 function App() {
   const [flippedQuestion, setFlippedQuestion] = useState(null);
-  const [scores, setScores] = useState({ team1: 0, team2: 0 });
+  const [scores, setScores] = useState({ blue: 0, green: 0 });
   const [answeredQuestions, setAnsweredQuestions] = useState({});
   const categories = Object.keys(questions);
   const half = Math.ceil(categories.length / 2);
@@ -30,6 +30,7 @@ function App() {
   };
 
   const handleScoreUpdate = (team, category, index) => {
+    console.log('team' , team)
     const points = (index + 1) * 10;
     setScores((prevScores) => ({
       ...prevScores,
