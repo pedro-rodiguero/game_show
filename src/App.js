@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { questions } from "./questions";
+import Header from "./Header";
+import Category from "./Category";
 import "./App.css";
 
 function App() {
@@ -42,117 +44,33 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Game Show</h1>
-        <div className="scoreboard">
-          <div>Team 1: {scores.team1}</div>
-          <div>Team 2: {scores.team2}</div>
-        </div>
-      </header>
+      <Header scores={scores} />
       <div className="categories">
         {flippedQuestion && <div className="highlighted-bg"></div>}
         <div className="level">
           {upperCategories.map((category, index) => (
-            <div key={index} className="category">
-              <h2>{category}</h2>
-              {questions[category].map((q, i) => (
-                <div
-                  key={i}
-                  className={`question-container ${
-                    flippedQuestion &&
-                    flippedQuestion.category === category &&
-                    flippedQuestion.index === i
-                      ? flippedQuestion.state === "question"
-                        ? "flipped scaled"
-                        : "flipped-twice scaled"
-                      : ""
-                  } ${
-                    answeredQuestions[`${category}-${i}`] === "team1"
-                      ? "team1-bg"
-                      : answeredQuestions[`${category}-${i}`] === "team2"
-                      ? "team2-bg"
-                      : ""
-                  }`}
-                >
-                  <button
-                    className="question front"
-                    onClick={() => handleQuestionClick(category, i)}
-                  >
-                    {(i + 1) * 10}
-                  </button>
-                  <div
-                    className="question back"
-                    onClick={() => handleQuestionClick(category, i)}
-                  >
-                    <p>{q.question}</p>
-                  </div>
-                  <div
-                    className="question back-twice"
-                    onClick={() => handleQuestionClick(category, i)}
-                  >
-                    <p>{q.answer}</p>
-                    <button onClick={() => handleScoreUpdate("team1")}>
-                      Team 1
-                    </button>
-                    <button onClick={() => handleScoreUpdate("team2")}>
-                      Team 2
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <Category
+              key={index}
+              category={category}
+              questions={questions[category]}
+              flippedQuestion={flippedQuestion}
+              answeredQuestions={answeredQuestions}
+              handleQuestionClick={handleQuestionClick}
+              handleScoreUpdate={handleScoreUpdate}
+            />
           ))}
         </div>
         <div className="level">
           {lowerCategories.map((category, index) => (
-            <div key={index} className="category">
-              <h2>{category}</h2>
-              {questions[category].map((q, i) => (
-                <div
-                  key={i}
-                  className={`question-container ${
-                    flippedQuestion &&
-                    flippedQuestion.category === category &&
-                    flippedQuestion.index === i
-                      ? flippedQuestion.state === "question"
-                        ? "flipped scaled"
-                        : "flipped-twice scaled"
-                      : ""
-                  } ${
-                    answeredQuestions[`${category}-${i}`] === "team1"
-                      ? "team1-bg"
-                      : answeredQuestions[`${category}-${i}`] === "team2"
-                      ? "team2-bg"
-                      : ""
-                  }`}
-                >
-                  <button
-                    className="question front"
-                    onClick={() => handleQuestionClick(category, i)}
-                  >
-                    {(i + 1) * 10}
-                  </button>
-                  <div
-                    className="question back"
-                    onClick={() => handleQuestionClick(category, i)}
-                  >
-                    <p>{q.question}</p>
-                  </div>
-                  <div
-                    className="question back-twice"
-                    onClick={() => handleQuestionClick(category, i)}
-                  >
-                    <p>{q.answer}</p>
-                    <button onClick={() => handleScoreUpdate("team1")}>
-                      Team 1
-                    </button>
-                    <button onClick={() => handleScoreUpdate("team2")}>
-                      Team 2
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <Category
+              key={index}
+              category={category}
+              questions={questions[category]}
+              flippedQuestion={flippedQuestion}
+              answeredQuestions={answeredQuestions}
+              handleQuestionClick={handleQuestionClick}
+              handleScoreUpdate={handleScoreUpdate}
+            />
           ))}
         </div>
       </div>
