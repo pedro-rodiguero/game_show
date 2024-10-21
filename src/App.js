@@ -31,7 +31,7 @@ function App() {
 
   const handleScoreUpdate = (team, category, index) => {
     console.log('team' , team)
-    const points = (index + 1) * 10;
+    const points = (index + 1) * 20;
     setScores((prevScores) => ({
       ...prevScores,
       [team]: prevScores[team] + points,

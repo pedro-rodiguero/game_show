@@ -32,7 +32,7 @@ const Question = ({
       style={{ backgroundColor: whoAnswered }}
       onClick={() => handleQuestionClick(category, index)}
     >        
-      {(index + 1) * 10}
+      {(index + 1) * 20}
       
       <div
         className="question back"

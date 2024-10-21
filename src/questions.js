@@ -18,7 +18,7 @@ export const questions = {
         answer: "Ester 8:9 Então foram chamados os escrivães do rei, naquele mesmo tempo, no terceiro mês (que é o mês de Sivã), aos vinte e três dias; e se escreveu conforme a tudo quanto ordenou Mardoqueu aos judeus, como também aos sátrapas, e aos governadores, e aos líderes das províncias, que se estendem da Úndia até Etiópia, cento e vinte e sete províncias, a cada província segundo o seu modo de escrever, e a cada povo conforme a sua língua; como também aos judeus segundo o seu modo de escrever, e conforme a sua língua." },
     ],
     "Conhecimentos Gerais": [
-      { question: "Que dia da semana foi 2 de julho de 2001?",
+      { question: "Que dia da semana foi 2 de julho de 2001? \na) Quinta \nb) Segunda \nc) Sábado \nd) Terça \ne) Domingo \nf) Sexta, \ng) Quarta",
         answer: "Segunda" },
       { question: "Qual a maior fronteira (em extensão) que a França tem com outro país?",
         answer: "Brasil" },
@@ -28,7 +28,7 @@ export const questions = {
     "Bíblia ou Influencer": [
       { question: "Não permita que a pressa roube a beleza do seu caminho. Tudo tem seu tempo e propósito",
         answer: "INFLUENCER, Camila Coelho" },
-      { question: "Aquele que aguenta até o fim será salvo",
+      { question: "Aquele que aguentar até o fim será salvo",
         answer: "BÍBLIA! Mateus 24:13" },
       { question: "A jornada é longa, mas a fé me sustenta. Eu sou maior que qualquer obstáculo",
         answer: "INFLUENCER, Whindersson Nunes" },
